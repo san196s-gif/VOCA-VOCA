@@ -1,0 +1,63 @@
+# ===================================================================
+# Podcast AI - Master Application Configuration
+# Local-first, offline multi-speaker podcast generation engine
+# ===================================================================
+
+server:
+  host: "127.0.0.1"
+  port: 8000
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://127.0.0.1:3000"
+    - "http://localhost:8000"
+    - "http://127.0.0.1:8000"
+
+storage:
+  base_dir: "data"
+  audio_dir: "data/audio"
+  transcripts_dir: "data/transcripts"
+  projects_dir: "data/projects"
+  models_dir: "data/models"
+  temp_dir: "data/temp"
+  database_file: "data/podcast.db"
+
+hardware:
+  device: "auto"              # "auto", "cuda", "cpu"
+  compute_type: "auto"        # "auto", "float16", "int8", "int8_float16"
+  min_disk_free_gb: 2.0       # Minimum required disk space before starting generation
+
+stt:
+  engine: "faster-whisper"
+  model_size: "small"         # "small", "medium", "large-v3"
+  device: "auto"
+  beam_size: 5
+  supported_languages:
+    - "fa"
+    - "en"
+    - "auto"
+  chunk_duration_sec: 300     # 5-minute chunks for long-form audio handling
+
+llm:
+  engine: "ollama"
+  ollama_url: "http://localhost:11434"
+  model_name: "llama3.2"       # or "llama3", "mistral", "qwen2.5"
+  temperature: 0.7
+  fallback_to_local_orchestrator: true
+  max_script_tokens: 8192
+
+tts:
+  engine: "piper"             # "piper", "coqui", "acoustic_local"
+  models_dir: "data/models/piper"
+  sample_rate: 44100
+  channels: 2
+  fallback_to_acoustic: true
+
+audio:
+  sample_rate: 44100
+  channels: 2
+  target_lufs: -16.0          # EBU R128 podcast standard loudness
+  max_peak_db: -1.0           # Clipping prevention ceiling
+  speaker_pause_ms: 650       # Natural inter-speaker dialogue pause
+  sentence_pause_ms: 350      # Natural intra-speaker sentence pause
+  output_format: "mp3"        # "mp3" and "wav"
+  mp3_bitrate: "192k"

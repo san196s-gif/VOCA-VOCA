@@ -1,0 +1,40 @@
+# ===================================================================
+# Podcast AI - Backend Dependencies
+# Python 3.10+ compatible (Windows 10/11, Linux, macOS)
+# ===================================================================
+
+# Web Server & API Framework
+fastapi>=0.110.0,<1.0.0
+uvicorn[standard]>=0.28.0,<1.0.0
+pydantic>=2.6.0,<3.0.0
+python-multipart>=0.0.9
+aiofiles>=23.2.1
+
+# Configuration & Utilities
+pyyaml>=6.0.1
+requests>=2.31.0
+psutil>=5.9.8
+
+# Audio Processing & Signal Engineering
+numpy>=1.24.0,<2.1.0
+scipy>=1.11.0,<1.14.0
+soundfile>=0.12.1
+pydub>=0.25.1
+
+# Speech-to-Text (STT) - Offline Local Whisper
+# Note: faster-whisper uses CTranslate2 for 4x faster local inference on CPU/GPU
+faster-whisper>=1.0.1; platform_system != "Darwin" or platform_machine != "arm64"
+
+# PyTorch & Audio (Optional CUDA acceleration)
+# On Windows with NVIDIA GPU: pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu121
+torch>=2.1.0
+torchaudio>=2.1.0
+
+# Text-to-Speech (Local Piper integration)
+# Piper TTS executable or python package for offline neural voice synthesis
+piper-tts>=1.2.0; python_version < "3.12"
+
+# Automated Testing
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+httpx>=0.27.0

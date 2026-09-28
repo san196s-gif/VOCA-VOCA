@@ -1,0 +1,291 @@
+# ===================================================================
+# Podcast AI - Voice Profiles Configuration
+# Defined for Local Offline Synthesis (Piper / Coqui / XTTS compatible)
+# ===================================================================
+
+voices:
+  # -----------------------------------------------------------------
+  # PERSIAN VOICES (فارسی)
+  # -----------------------------------------------------------------
+  - id: "fa-deep-cinematic-male"
+    name: "آرش (سینمایی بم)"
+    name_en: "Arash (Deep Cinematic Male)"
+    language: "fa"
+    gender: "male"
+    model: "piper-fa-hafez"
+    speaker: "arash_cinematic"
+    style: "deep_cinematic"
+    speed: 0.95
+    pitch: -2.5
+    base_freq: 95.0
+    formants: [650, 1100, 2400]
+    description: "صدای بم، گیرا و طنین‌انداز، مناسب برای مقدمه و موضوعات حماسی یا فلسفی."
+
+  - id: "fa-warm-male"
+    name: "امید (گرم و صمیمی)"
+    name_en: "Omid (Warm Male)"
+    language: "fa"
+    gender: "male"
+    model: "piper-fa-hafez"
+    speaker: "omid_warm"
+    style: "warm_conversational"
+    speed: 1.0
+    pitch: -0.5
+    base_freq: 125.0
+    formants: [700, 1220, 2550]
+    description: "لحن آرامش‌بخش، دوستانه و شفاف، ایده‌آل برای میزبان اصلی پادکست و گفتگوهای صمیمانه."
+
+  - id: "fa-documentary-male"
+    name: "بهرام (مستند علمی)"
+    name_en: "Bahram (Documentary Male)"
+    language: "fa"
+    gender: "male"
+    model: "piper-fa-hafez"
+    speaker: "bahram_doc"
+    style: "documentary_analytical"
+    speed: 0.98
+    pitch: -1.2
+    base_freq: 110.0
+    formants: [680, 1150, 2480]
+    description: "بیان دقیق، آموزنده و پرصلابت، طراحی شده برای تحلیل داده‌ها و روایت‌های مستند."
+
+  - id: "fa-serious-male"
+    name: "کامران (جدی و تحلیلی)"
+    name_en: "Kamran (Serious Male)"
+    language: "fa"
+    gender: "male"
+    model: "piper-fa-hafez"
+    speaker: "kamran_serious"
+    style: "serious_authoritative"
+    speed: 1.02
+    pitch: -1.8
+    base_freq: 105.0
+    formants: [660, 1120, 2450]
+    description: "صدای مقتدر، قاطع و رسمی، مناسب برای نقد، تحلیل اقتصادی و دیدگاه‌های نقادانه."
+
+  - id: "fa-young-male"
+    name: "نیما (جوان و پرانرژی)"
+    name_en: "Nima (Young Male)"
+    language: "fa"
+    gender: "male"
+    model: "piper-fa-hafez"
+    speaker: "nima_young"
+    style: "energetic_curious"
+    speed: 1.08
+    pitch: 1.5
+    base_freq: 145.0
+    formants: [750, 1300, 2700]
+    description: "ریتم پویا، کنجکاو و پرانرژی، ایده‌آل برای پرسش‌گری و مباحث فناوری و روزمره."
+
+  - id: "fa-mature-male"
+    name: "پرویز (باتجربه و خردمند)"
+    name_en: "Parviz (Mature Male)"
+    language: "fa"
+    gender: "male"
+    model: "piper-fa-hafez"
+    speaker: "parviz_mature"
+    style: "mature_wise"
+    speed: 0.92
+    pitch: -2.0
+    base_freq: 100.0
+    formants: [640, 1080, 2380]
+    description: "صدای جاافتاده با طمأنینه و وقار، نمایانگر تجربه تاریخی و کارشناسی ارشد."
+
+  - id: "fa-warm-female"
+    name: "سارا (گرم و شنیدنی)"
+    name_en: "Sara (Warm Female)"
+    language: "fa"
+    gender: "female"
+    model: "piper-fa-shirin"
+    speaker: "sara_warm"
+    style: "warm_engaging"
+    speed: 1.0
+    pitch: 1.2
+    base_freq: 215.0
+    formants: [820, 1420, 2900]
+    description: "صدای لطیف، دلنشین و شیوا، فوق‌العاده برای ارتباط نزدیک با مخاطب و اجرای هم‌زمان."
+
+  - id: "fa-cinematic-female"
+    name: "رویا (سینمایی عمیق)"
+    name_en: "Roya (Cinematic Female)"
+    language: "fa"
+    gender: "female"
+    model: "piper-fa-shirin"
+    speaker: "roya_cinematic"
+    style: "dramatic_expressive"
+    speed: 0.94
+    pitch: -0.8
+    base_freq: 190.0
+    formants: [790, 1380, 2850]
+    description: "بیان دراماتیک و عمیق زنانه، مناسب برای لحظات اوج، داستان‌سرایی و سناریوهای رازآلود."
+
+  - id: "fa-documentary-female"
+    name: "مریم (مستند و گزارشگر)"
+    name_en: "Maryam (Documentary Female)"
+    language: "fa"
+    gender: "female"
+    model: "piper-fa-shirin"
+    speaker: "maryam_doc"
+    style: "documentary_clear"
+    speed: 1.02
+    pitch: 0.5
+    base_freq: 205.0
+    formants: [800, 1400, 2880]
+    description: "صدای روشن، دانشگاهی و ساختارمند، مناسب برای تببین مفاهیم پیچیده و بررسی شواهد."
+
+  - id: "fa-young-female"
+    name: "نگار (جوان و پویا)"
+    name_en: "Negar (Young Female)"
+    language: "fa"
+    gender: "female"
+    model: "piper-fa-shirin"
+    speaker: "negar_young"
+    style: "bright_enthusiastic"
+    speed: 1.06
+    pitch: 2.0
+    base_freq: 235.0
+    formants: [850, 1480, 3050]
+    description: "لحن شاداب، کنجکاو و پرحرارت، مناسب برای گفتگوهای اجتماعی، استارتاپی و علمی معاصر."
+
+  # -----------------------------------------------------------------
+  # INTERNATIONAL VOICES (ENGLISH)
+  # -----------------------------------------------------------------
+  - id: "en-deep-cinematic-male"
+    name: "Marcus (Deep Cinematic Male)"
+    name_en: "Marcus (Deep Cinematic Male)"
+    language: "en"
+    gender: "male"
+    model: "piper-en-lessac"
+    speaker: "marcus_cinematic"
+    style: "deep_cinematic"
+    speed: 0.94
+    pitch: -2.8
+    base_freq: 92.0
+    formants: [640, 1090, 2390]
+    description: "Resonant, baritone cinematic voice with gravitas and weight. Ideal for atmospheric intros and deep narratives."
+
+  - id: "en-warm-narrator"
+    name: "Arthur (Warm Narrator)"
+    name_en: "Arthur (Warm Narrator)"
+    language: "en"
+    gender: "male"
+    model: "piper-en-lessac"
+    speaker: "arthur_warm"
+    style: "warm_storyteller"
+    speed: 0.98
+    pitch: -0.6
+    base_freq: 120.0
+    formants: [690, 1190, 2520]
+    description: "Classic warm storytelling timbre. Engaging, gentle cadence with polished broadcast diction."
+
+  - id: "en-documentary-male"
+    name: "David (Documentary Male)"
+    name_en: "David (Documentary Male)"
+    language: "en"
+    gender: "male"
+    model: "piper-en-lessac"
+    speaker: "david_doc"
+    style: "documentary_analytical"
+    speed: 1.0
+    pitch: -1.0
+    base_freq: 112.0
+    formants: [675, 1140, 2460]
+    description: "Objective, articulate documentary narrator voice. Clear phrasing calibrated for complex nonfiction."
+
+  - id: "en-dramatic-male"
+    name: "Victor (Dramatic Male)"
+    name_en: "Victor (Dramatic Male)"
+    language: "en"
+    gender: "male"
+    model: "piper-en-lessac"
+    speaker: "victor_dramatic"
+    style: "dramatic_intense"
+    speed: 1.02
+    pitch: -1.4
+    base_freq: 108.0
+    formants: [665, 1130, 2440]
+    description: "Intense, compelling dramatic delivery with calculated pauses and emotional inflection."
+
+  - id: "en-young-male"
+    name: "Leo (Young Male)"
+    name_en: "Leo (Young Male)"
+    language: "en"
+    gender: "male"
+    model: "piper-en-lessac"
+    speaker: "leo_young"
+    style: "energetic_conversational"
+    speed: 1.08
+    pitch: 1.4
+    base_freq: 142.0
+    formants: [740, 1290, 2680]
+    description: "Upbeat, inquisitive modern podcast co-host voice. Fast-paced, engaging, and relatable."
+
+  - id: "en-mature-male"
+    name: "Sterling (Mature Male)"
+    name_en: "Sterling (Mature Male)"
+    language: "en"
+    gender: "male"
+    model: "piper-en-lessac"
+    speaker: "sterling_mature"
+    style: "authoritative_wise"
+    speed: 0.92
+    pitch: -2.2
+    base_freq: 98.0
+    formants: [630, 1070, 2350]
+    description: "Seasoned, professorial authority with rich acoustic texture and measured emphasis."
+
+  - id: "en-deep-female"
+    name: "Helena (Deep Female)"
+    name_en: "Helena (Deep Female)"
+    language: "en"
+    gender: "female"
+    model: "piper-en-amy"
+    speaker: "helena_deep"
+    style: "contralto_commanding"
+    speed: 0.96
+    pitch: -1.2
+    base_freq: 182.0
+    formants: [760, 1340, 2780]
+    description: "Rich contralto range, grounded and commanding. Brings gravitas to intellectual discussions."
+
+  - id: "en-warm-female"
+    name: "Elena (Warm Female)"
+    name_en: "Elena (Warm Female)"
+    language: "en"
+    gender: "female"
+    model: "piper-en-amy"
+    speaker: "elena_warm"
+    style: "warm_conversational"
+    speed: 1.0
+    pitch: 0.6
+    base_freq: 210.0
+    formants: [810, 1410, 2890]
+    description: "Inviting, friendly and crystal clear. Excellent as the primary anchor or interviewer."
+
+  - id: "en-cinematic-female"
+    name: "Claire (Cinematic Female)"
+    name_en: "Claire (Cinematic Female)"
+    language: "en"
+    gender: "female"
+    model: "piper-en-amy"
+    speaker: "claire_cinematic"
+    style: "cinematic_expressive"
+    speed: 0.95
+    pitch: -0.2
+    base_freq: 198.0
+    formants: [795, 1390, 2840]
+    description: "Nuanced, expressive delivery with cinematic intimacy and dynamic emotional range."
+
+  - id: "en-documentary-female"
+    name: "Rachel (Documentary Female)"
+    name_en: "Rachel (Documentary Female)"
+    language: "en"
+    gender: "female"
+    model: "piper-en-amy"
+    speaker: "rachel_doc"
+    style: "documentary_precise"
+    speed: 1.03
+    pitch: 0.8
+    base_freq: 218.0
+    formants: [825, 1430, 2920]
+    description: "Precise, investigative tone with clean phonetics. Perfect for science, history, and investigative podcasts."

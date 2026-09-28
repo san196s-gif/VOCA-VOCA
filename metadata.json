@@ -1,0 +1,6 @@
+{
+  "name": "Podcast AI - Local Multi-Speaker Studio",
+  "description": "Production-ready, local-first offline multi-speaker podcast generator with Persian & English STT, intelligent dialogue orchestration, and audio mixing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

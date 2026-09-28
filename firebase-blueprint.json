@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "PodcastProject": {
+      "title": "PodcastProject",
+      "description": "User created podcast configuration, script and voice lineup.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 200 },
+        "sourceText": { "type": "string", "maxLength": 500000 },
+        "language": { "type": "string", "enum": ["fa", "en", "mixed"] },
+        "selectedVoiceIds": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "title", "sourceText", "selectedVoiceIds", "createdAt", "updatedAt"]
+    },
+    "PodcastEpisode": {
+      "title": "PodcastEpisode",
+      "description": "Generated multi-speaker audio episode master with script segments.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 200 },
+        "audioUrl": { "type": "string", "maxLength": 2048 },
+        "durationSec": { "type": "number" },
+        "voices": { "type": "array" },
+        "scriptJson": { "type": "string", "maxLength": 1000000 },
+        "driveFileId": { "type": "string", "maxLength": 256 },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "title", "durationSec", "voices", "createdAt"]
+    },
+    "TranscriptionRecord": {
+      "title": "TranscriptionRecord",
+      "description": "Locally transcribed audio files and timestamped transcripts.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "filename": { "type": "string", "maxLength": 256 },
+        "transcriptText": { "type": "string", "maxLength": 500000 },
+        "language": { "type": "string", "maxLength": 16 },
+        "durationSec": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "filename", "transcriptText", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/projects/{projectId}": {
+      "schema": "PodcastProject",
+      "description": "User saved podcast drafting projects."
+    },
+    "/users/{userId}/episodes/{episodeId}": {
+      "schema": "PodcastEpisode",
+      "description": "Rendered podcast episodes saved by the user."
+    },
+    "/users/{userId}/transcriptions/{transcriptionId}": {
+      "schema": "TranscriptionRecord",
+      "description": "User speech-to-text transcriptions."
+    }
+  }
+}

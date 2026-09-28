@@ -1,0 +1,90 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Projects Validation
+    function isValidPodcastProject(data) {
+      return data.keys().hasAll(['id', 'userId', 'title', 'sourceText', 'selectedVoiceIds', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['id', 'userId', 'title', 'sourceText', 'language', 'selectedVoiceIds', 'createdAt', 'updatedAt'])
+        && data.id is string && data.id.size() <= 128
+        && data.userId == request.auth.uid
+        && data.title is string && data.title.size() <= 200
+        && data.sourceText is string && data.sourceText.size() <= 500000
+        && data.selectedVoiceIds is list && data.selectedVoiceIds.size() >= 1 && data.selectedVoiceIds.size() <= 6;
+    }
+
+    // Episodes Validation
+    function isValidPodcastEpisode(data) {
+      return data.keys().hasAll(['id', 'userId', 'title', 'durationSec', 'voices', 'createdAt'])
+        && data.keys().hasOnly(['id', 'userId', 'title', 'audioUrl', 'durationSec', 'voices', 'scriptJson', 'driveFileId', 'createdAt'])
+        && data.id is string && data.id.size() <= 128
+        && data.userId == request.auth.uid
+        && data.title is string && data.title.size() <= 200
+        && data.durationSec is number
+        && data.voices is list && data.voices.size() >= 1 && data.voices.size() <= 6;
+    }
+
+    // Transcription Validation
+    function isValidTranscription(data) {
+      return data.keys().hasAll(['id', 'userId', 'filename', 'transcriptText', 'createdAt'])
+        && data.keys().hasOnly(['id', 'userId', 'filename', 'transcriptText', 'language', 'durationSec', 'createdAt'])
+        && data.id is string && data.id.size() <= 128
+        && data.userId == request.auth.uid
+        && data.filename is string && data.filename.size() <= 256
+        && data.transcriptText is string && data.transcriptText.size() <= 500000;
+    }
+
+    match /users/{userId} {
+      allow get, write: if isOwner(userId) && isValidId(userId);
+
+      match /projects/{projectId} {
+        allow get, delete: if isOwner(userId) && isValidId(projectId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId) && isValidId(projectId) && isValidPodcastProject(incoming());
+        allow update: if isOwner(userId) && isValidId(projectId) && isValidPodcastProject(incoming())
+          && incoming().id == existing().id && incoming().userId == existing().userId;
+      }
+
+      match /episodes/{episodeId} {
+        allow get, delete: if isOwner(userId) && isValidId(episodeId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId) && isValidId(episodeId) && isValidPodcastEpisode(incoming());
+        allow update: if isOwner(userId) && isValidId(episodeId) && isValidPodcastEpisode(incoming())
+          && incoming().id == existing().id && incoming().userId == existing().userId;
+      }
+
+      match /transcriptions/{transcriptionId} {
+        allow get, delete: if isOwner(userId) && isValidId(transcriptionId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId) && isValidId(transcriptionId) && isValidTranscription(incoming());
+        allow update: if isOwner(userId) && isValidId(transcriptionId) && isValidTranscription(incoming())
+          && incoming().id == existing().id && incoming().userId == existing().userId;
+      }
+    }
+  }
+}
